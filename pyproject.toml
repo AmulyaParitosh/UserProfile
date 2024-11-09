@@ -1,7 +1,7 @@
 [project]
 name = "UserProfile"
 version = "0.1.0"
-description = "Default template for PDM package"
+description = "This is simple Django app that showcases the user authentication process with django."
 authors = [
     {name = "Amulya Paritosh", email = "amulya1171@gmail.com"},
 ]
