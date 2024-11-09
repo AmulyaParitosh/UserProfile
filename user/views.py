@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import messages
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import (
     AuthenticationForm,
@@ -115,6 +115,22 @@ def password_reset_confirm_view(request, uid, token):
 @login_required
 def dashboard_view(request):
     return render(request, "dashboard.html", {"username": request.user.username})
+
+
+@login_required
+def change_password_view(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Keeps the user logged in
+            messages.success(request, "Password successfully updated.")
+            return redirect("dashboard")
+        else:
+            messages.error(request, "Please correct the error(s) below.")
+    else:
+        form = PasswordChangeForm(user=request.user)
+    return render(request, "change_password.html", {"form": form})
 
 
 def logout_view(request):

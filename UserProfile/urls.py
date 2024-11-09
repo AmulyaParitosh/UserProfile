@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 
 from user.views import (
+    change_password_view,
     dashboard_view,
     forgot_password_view,
     login_view,
@@ -38,6 +39,6 @@ urlpatterns = [
     ),
     path("dashboard/", dashboard_view, name="dashboard"),
     path("profile/", dashboard_view, name="profile"),
-    path("change_password/", dashboard_view, name="change_password"),
+    path("change_password/", change_password_view, name="change_password"),
     path("logout/", logout_view, name="logout"),
 ]
