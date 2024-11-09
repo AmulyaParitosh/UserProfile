@@ -21,5 +21,6 @@ from user.views import signup_view, login_view
 urlpatterns = [
     path('admin/', admin.site.urls),
 	path('signup/', signup_view, name='signup'),
-	path('login/', signup_view, name='login'),
+	path('login/', login_view, name='login'),
+	path('forgot_password/', login_view, name='forgot_password'),
 ]
