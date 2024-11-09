@@ -21,6 +21,7 @@ from user.views import (
     dashboard_view,
     forgot_password_view,
     login_view,
+    logout_view,
     password_reset_confirm_view,
     signup_view,
 )
@@ -38,5 +39,5 @@ urlpatterns = [
     path("dashboard/", dashboard_view, name="dashboard"),
     path("profile/", dashboard_view, name="profile"),
     path("change_password/", dashboard_view, name="change_password"),
-    path("logout/", dashboard_view, name="logout"),
+    path("logout/", logout_view, name="logout"),
 ]

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import (
     AuthenticationForm,
@@ -115,3 +115,9 @@ def password_reset_confirm_view(request, uid, token):
 @login_required
 def dashboard_view(request):
     return render(request, "dashboard.html", {"username": request.user.username})
+
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, "You have been logged out.")
+    return redirect("login")
