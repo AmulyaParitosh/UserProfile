@@ -24,6 +24,7 @@ from user.views import (
     login_view,
     logout_view,
     password_reset_confirm_view,
+    profile_view,
     signup_view,
 )
 
@@ -38,7 +39,7 @@ urlpatterns = [
         name="password_reset_confirm",
     ),
     path("dashboard/", dashboard_view, name="dashboard"),
-    path("profile/", dashboard_view, name="profile"),
+    path("profile/", profile_view, name="profile"),
     path("change_password/", change_password_view, name="change_password"),
     path("logout/", logout_view, name="logout"),
 ]
